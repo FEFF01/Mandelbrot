@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <!--<script id="mb_vertex_shader" type="x-shader/x-vertex">
+            precision highp float;
+            precision mediump int;
+            attribute vec2 v2_position;
+            varying vec2 v2_textureCoord;
+            uniform vec2 v2_zoom;
+            uniform vec2 v2_center;
+            void main(){
+                v2_textureCoord=v2_position*v2_zoom+v2_center;
+                gl_Position=vec4(v2_position,0,1);
+            }
+        </script>
+        <script id="mb_fragment_shader" type="x-shader/x-fragment">
+            precision highp float;
+            precision mediump int;
+            varying vec2 v2_textureCoord;
+            void main(){
+                vec2 v2_z_new=vec2(v2_textureCoord);
+                vec2 v2_z=vec2(v2_z_new.x*v2_z_new.x-v2_z_new.y*v2_z_new.y,2.0*v2_z_new.x*v2_z_new.y)+v2_z_new;
+                float f_escape=1.0/*1.0*/;
+                
+                for(int i=1;i<1024;i++){
+                    v2_z_new=vec2(v2_z.x*v2_z.x-v2_z.y*v2_z.y,2.0*v2_z.x*v2_z.y)+v2_textureCoord;
+                    float distence=dot(v2_z_new,v2_z_new);
+                    if(distence>4.0){
+                        //gl_FragColor=vec4(0,0,0,1);
+                        gl_FragColor=vec4(1,0,1,mod(sqrt(float(i)/512.0),1.0));
+                        return;
+                    }
+                    f_escape+=exp(dot(v2_z_new,v2_z)/distence);
+                    v2_z=v2_z_new;
+                }
+                gl_FragColor=vec4(mod(log(f_escape),1.0),mod(log2(f_escape),1.0),mod(sqrt(f_escape),1.0),1);
+                //gl_FragColor=vec4(mod(f_escape*3.0,1.0),mod(f_escape*6.0,1.0),mod(f_escape*9.0,1.0),1);
+            }
+        </script>
+        <script async src="./js/Mandelbrot_Webgl.js"></script>-->
+        <script async src="./Mandelbrot.js"></script>
+    </body>
+</html>
